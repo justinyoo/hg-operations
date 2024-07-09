@@ -1,0 +1,14 @@
+az role assignment create --assignee {{ service principal id }} --role "User Access Administrator" --scope /subscriptions/{{ subscription id }}
+
+
+PUT
+
+https://management.azure.com/subscriptions/{{ subscription ID }}/resourceGroups/rg-{{ GitHub ID }}/providers/Microsoft.Authorization/roleAssignments/{{ guid() }}?api-version=2022-04-01
+
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{{ subscription ID }}/resourceGroups/rg-{{ GitHub ID }}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "principalId": "{{ UPN }}",
+    "principalType": "User"
+  }
+}
